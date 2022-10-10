@@ -15,10 +15,21 @@ public class Hero extends Actor
     public void act()
     {
         // Add your action code here.
-        move(5);
-        
-        if(isAtEdge()) {
-            setLocation(0, getY());
+        // move(5)
+        if(getX() == 0) {
+            setLocation(1, getY());
+        }
+        if(Greenfoot.isKeyDown("w")){
+            setLocation(getX(), getY()-3);
+        }
+        if(Greenfoot.isKeyDown("s")){
+            setLocation(getX(), getY()+3);
+        }
+        if(Greenfoot.isKeyDown("a")){
+            setLocation(getX()-3, getY());
+        }
+        if(Greenfoot.isKeyDown("d")){
+            setLocation(getX()+3, getY());
         }
     }
 }

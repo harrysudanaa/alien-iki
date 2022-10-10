@@ -20,17 +20,25 @@ public class MyWorld extends World
 
         prepare();
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
+    private void addActorInRandomPosition(Actor actor) {
+        int x = 600;
+        int y = Greenfoot.getRandomNumber(getHeight());
+        addObject(actor, x, y);
+    }
     private void prepare()
     {
         Hero hero = new Hero();
         addObject(hero,54,160);
         
-        Hero hero2 = new Hero();
-        addObject(hero2, 100, 270);
-          
+    }
+    public void act() {
+        if (Greenfoot.getRandomNumber(300) < 3) {
+            addActorInRandomPosition(new Enemy());
+        }
     }
 }
