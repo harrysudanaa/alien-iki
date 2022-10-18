@@ -20,7 +20,7 @@ public class MyWorld extends World
 
         prepare();
     }
-    
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -30,15 +30,31 @@ public class MyWorld extends World
         int y = Greenfoot.getRandomNumber(getHeight());
         addObject(actor, x, y);
     }
+
     private void prepare()
     {
         Hero hero = new Hero();
-        addObject(hero,54,160);
-        
+        addObject(hero, 60, 200);
+
     }
+
     public void act() {
-        if (Greenfoot.getRandomNumber(300) < 3) {
-            addActorInRandomPosition(new Enemy());
+        spawnEnemy();
+    }
+    
+    public int timerSpawnEnemy = 0;
+    public int totalEnemySpawn = 5;
+    public void spawnEnemy() {
+        
+        if (timerSpawnEnemy == 180) {
+            
+            for(int i = 0; i < totalEnemySpawn; i++) {
+                addObject(new Enemy(), 599, Greenfoot.getRandomNumber(400));
+            }
+            timerSpawnEnemy = 0;
+            
+        } else {
+            timerSpawnEnemy++;
         }
     }
 }

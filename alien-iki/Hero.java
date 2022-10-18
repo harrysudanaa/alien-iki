@@ -16,6 +16,11 @@ public class Hero extends Actor
     {
         // Add your action code here.
         // move(5)
+        moveHero();
+        shootLaser();
+        heroCollision();
+    }
+    public void moveHero() {
         if(getX() == 0) {
             setLocation(1, getY());
         }
@@ -30,6 +35,26 @@ public class Hero extends Actor
         }
         if(Greenfoot.isKeyDown("d")){
             setLocation(getX()+3, getY());
+        }
+    }
+    public int timerShoot = 0;
+    public void shootLaser() {
+        if (timerShoot == 30) {
+            getWorld().addObject(new Laser(), getX() + 70, getY());
+            timerShoot = 0;
+        } else {
+            timerShoot++;
+        }
+        
+    }
+    public int life = 5;
+    public void heroCollision() {
+        if (isTouching(Enemy.class)) {
+            setLocation(60, 200);
+            life--;
+        }
+        if (life == 0) {
+            getWorld().removeObject(this);
         }
     }
 }
