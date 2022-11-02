@@ -20,7 +20,7 @@ public class Hero extends Actor
         shootLaser();
         heroCollision();
     }
-    public void moveHero() {
+    private void moveHero() {
         if(getX() == 0) {
             setLocation(1, getY());
         }
@@ -37,8 +37,8 @@ public class Hero extends Actor
             setLocation(getX()+3, getY());
         }
     }
-    public int timerShoot = 0;
-    public void shootLaser() {
+    private int timerShoot = 0;
+    private void shootLaser() {
         if (timerShoot == 30) {
             getWorld().addObject(new Laser(), getX() + 70, getY());
             timerShoot = 0;
@@ -47,8 +47,8 @@ public class Hero extends Actor
         }
         
     }
-    public int life = 5;
-    public void heroCollision() {
+    private int life = 5;
+    private void heroCollision() {
         if (isTouching(Enemy.class)) {
             setLocation(60, 200);
             life--;

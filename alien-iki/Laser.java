@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Laser extends Actor
 {
+
     /**
      * Act - do whatever the Laser wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,7 +19,7 @@ public class Laser extends Actor
         move(8);
         laserHitEnemy();
     }
-    public void laserHitEnemy() {
+    private void laserHitEnemy() {
         if(isTouching(Enemy.class)) {
             removeTouching(Enemy.class);
             // removeTouching(Laser.class);

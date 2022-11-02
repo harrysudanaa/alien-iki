@@ -23,11 +23,25 @@ public class Enemy extends Actor
     public void act()
     {
         // Add your action code here.
-        move(speed);
+        moveEnemy();
+        // shootLaser();
         // remove the enemy when the enemy is at edge of the world
+        
+    }
+    public int timerShoot = 0;
+    public void shootLaser() {
+        if (timerShoot == 30) {
+            getWorld().addObject(new Laser(), getX() + 70, getY());
+            timerShoot = 0;
+        } else {
+            timerShoot++;
+        }
+        
+    }
+    public void moveEnemy() {
+        move(speed);
         if (isAtEdge()) {
             getWorld().removeObject(this);
         }
-        
     }
 }

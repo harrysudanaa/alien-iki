@@ -42,15 +42,12 @@ public class MyWorld extends World
         spawnEnemy();
     }
     
-    public int timerSpawnEnemy = 0;
-    public int totalEnemySpawn = 5;
-    public void spawnEnemy() {
+    private int timerSpawnEnemy = 0;
+    private int totalEnemySpawn = 5;
+    private void spawnEnemy() {
         
         if (timerSpawnEnemy == 180) {
-            
-            for(int i = 0; i < totalEnemySpawn; i++) {
-                addObject(new Enemy(), 599, Greenfoot.getRandomNumber(400));
-            }
+            addObject(new Enemy(Greenfoot.getRandomNumber(4) + 1), 599, Greenfoot.getRandomNumber(400));
             timerSpawnEnemy = 0;
             
         } else {
